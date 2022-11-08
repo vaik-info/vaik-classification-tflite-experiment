@@ -2,12 +2,50 @@
 
 Create json file by classification model. Calc ACC.
 
+------
 
 ## Install
 
 ```shell
 pip install -r requirements.txt
 ```
+
+### Docker Install
+
+```shell
+sudo apt-get update && sudo apt-get upgrade
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+```
+
+
+### armv7l(raspberry pi 4b) without coral
+
+```shell
+sudo docker build -t raspberry4b_experiment -f ./Dockerfile.raspberrypib4 .
+sudo docker run --name raspberry4b_experiment_container \
+           --rm \
+           -v ~/.vaik-mnist-classification-dataset/:/workspace/vaik-mnist-classification-dataset \
+           -v ~/output_tflite_model:/workspace/output_tflite_model \
+           -v $(pwd):/workspace/source \
+           -it raspberry4b_experiment /bin/bash
+```
+
+### armv7l(raspberry pi 4b) with coral
+
+```shell
+sudo docker build -t raspberry4b_experiment -f ./Dockerfile.raspberrypib4 .
+sudo docker run --name raspberry4b_experiment_container \
+           --rm \
+           --privileged \
+           -v ~/.vaik-mnist-classification-dataset:/workspace/vaik-mnist-classification-dataset \
+           -v ~/output_tflite_model:/workspace/output_tflite_model \
+           -v $(pwd):/workspace/source \
+           -v /dev/bus/usb:/dev/bus/usb \
+           -it raspberry4b_experiment /bin/bash
+```
+
+---------
 
 ## Usage
 
