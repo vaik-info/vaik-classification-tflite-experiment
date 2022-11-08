@@ -52,10 +52,10 @@ sudo docker run --name raspberry4b_experiment_container \
 ### Create json file
 
 ```shell
-python inference.py --input_saved_model_dir_path '~/output_tflite_model/mnist_mobile_net_v2.tflite' \
-                --input_classes_path '~/.vaik-mnist-classification-dataset/classes.txt' \
-                --input_image_dir_path '~/.vaik-mnist-classification-dataset/valid' \
-                --output_json_dir_path '~/.vaik-mnist-classification-dataset/valid_inference'
+python3 inference.py --input_saved_model_dir_path '/workspace/output_tflite_model/mnist_mobile_net_v2.tflite' \
+                --input_classes_path '/workspace/vaik-mnist-classification-dataset/classes.txt' \
+                --input_image_dir_path '/workspace/vaik-mnist-classification-dataset/valid' \
+                --output_json_dir_path '/workspace/vaik-mnist-classification-dataset/valid_inference'
 ```
 
 - input_image_dir_path
@@ -112,8 +112,8 @@ python inference.py --input_saved_model_dir_path '~/output_tflite_model/mnist_mo
 ### Calc ACC
 
 ```shell
-python calc_acc.py --input_json_dir_path '~/.vaik-mnist-classification-dataset/valid_inference' \
-                --input_classes_path '~/.vaik-mnist-classification-dataset/classes.txt'
+python3 calc_acc.py --input_json_dir_path '/workspace/.vaik-mnist-classification-dataset/valid_inference' \
+                --input_classes_path '/workspace/.vaik-mnist-classification-dataset/classes.txt'
 ```
 
 #### Output
