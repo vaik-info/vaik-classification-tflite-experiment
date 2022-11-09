@@ -18,6 +18,17 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
 
+### aarch64(a1.medium) without coral
+
+```shell
+sudo docker build -t a1_medium_experiment -f ./Dockerfile.a1_medium .
+sudo docker run --name a1_medium_experiment_container \
+           --rm \
+           -v ~/.vaik-mnist-classification-dataset/:/workspace/vaik-mnist-classification-dataset \
+           -v ~/output_tflite_model:/workspace/output_tflite_model \
+           -v $(pwd):/workspace/source \
+           -it a1_medium_experiment /bin/bash
+```
 
 ### armv7l(raspberry pi 4b) without coral
 
@@ -112,8 +123,8 @@ python3 inference.py --input_saved_model_dir_path '/workspace/output_tflite_mode
 ### Calc ACC
 
 ```shell
-python3 calc_acc.py --input_json_dir_path '/workspace/.vaik-mnist-classification-dataset/valid_inference' \
-                --input_classes_path '/workspace/.vaik-mnist-classification-dataset/classes.txt'
+python3 calc_acc.py --input_json_dir_path '/workspace/vaik-mnist-classification-dataset/valid_inference' \
+                --input_classes_path '/workspace/vaik-mnist-classification-dataset/classes.txt'
 ```
 
 #### Output
