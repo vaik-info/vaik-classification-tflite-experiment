@@ -10,7 +10,7 @@ def calc_acc(json_dict_list, classes):
     for json_dict in json_dict_list:
         pred_list.append(classes.index(json_dict['label'][0]))
         gt_list.append(classes.index(json_dict['answer']))
-    print(metrics.classification_report(pred_list, gt_list, target_names=classes, digits=4))
+    print(metrics.classification_report(gt_list, pred_list, target_names=classes, digits=4))
 
 
 def main(input_json_dir_path, input_classes_path):
